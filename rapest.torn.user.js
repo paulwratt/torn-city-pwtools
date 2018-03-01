@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.01
+// @version      1.02
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -31,12 +31,14 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} text   The text of the button
    * @return {jQuery}
    */
-  function pw_htmlIconButton(text,ID) {
+  function pw_htmlIconButtonAdd(text,ID) {
     var profileButton = 'profile-button-';
+    var profileButtonColor = '';
     var profileButtonTitle = 'RApest: ';
     var profileButtonURL = 'https://www.torn.com/';
     if (text == 'B') {
-      profileButton = profileButton + 'addEnemy';
+      profileButton = profileButton + 'addFriend';
+      profileButtonColor = 'profile-button-black ';
       profileButtonTitle = profileButtonTitle + 'Add to Blacklist';
       profileButtonURL = profileButtonURL + 'blacklist.php#/p=add&amp;XID='+ID;
     } else if (text == 'F') {
@@ -44,12 +46,32 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       profileButtonTitle = profileButtonTitle + 'Add to Friendslist';
       profileButtonURL = profileButtonURL + 'friendlist.php#/p=add&amp;XID='+ID;
     }
-    return '<a title="'+profileButtonTitle+'" class="profile-button '+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+    return '<a title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
   }
 
+  function pw_htmlIconButtonRemove(text) {
+    var profileButton = 'profile-button-';
+    var profileButtonColor = '';
+    var profileButtonTitle = 'RApest: ';
+    var profileButtonURL = 'https://www.torn.com/';
+    if (text == 'B') {
+      profileButton = profileButton + 'addEnemy';
+      profileButtonColor = 'profile-button-black ';
+      profileButtonTitle = profileButtonTitle + 'Remove from Blacklist';
+      profileButtonURL = profileButtonURL + 'blacklist.php';
+    } else if (text == 'F') {
+      profileButton = profileButton + 'addEnemy';
+      profileButtonTitle = profileButtonTitle + 'Remove from Friendslist';
+      profileButtonURL = profileButtonURL + 'friendlist.php';
+    }
+    return '<a target="rapest" title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+  }
 
   function pw_wrapButtons(profileID) {
     GM_addStyle((<><![CDATA[
+.d .profile-buttons {
+    display: float;
+}
 .d .profile-buttons .buttons-list {
     font: inherit;
     font-size: 100%;
@@ -67,6 +89,9 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     background: linear-gradient(to bottom, #ebebeb 0%, #dddddd 100%);
     box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0px 0px rgba(255, 255, 255, 0.5);
     border-radius: 5px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-black{
+    background: linear-gradient(to bottom, #777777 0%, #333333 100%);
 }
 .d .profile-buttons .buttons-list .profile-button .icon {
     background-image: url(/images/v2/sidebar_icons_desktop_2017.png);
@@ -92,14 +117,18 @@ if (!(window === window.top && $('li.logout').length === 0)) {
 }
 ]]></>).toString());
 
-    var btnFriend = pw_htmlIconButton('F', profileID);
-    var btnEnemy = pw_htmlIconButton('B', profileID);
-    var btnList = '<div class="buttons-list">'+btnFriend+btnEnemy+'</div>';
+    var btnFriendAdd = pw_htmlIconButtonAdd('F', profileID);
+    var btnFriendRemove = pw_htmlIconButtonRemove('F');
+    var btnEnemyAdd = pw_htmlIconButtonAdd('B', profileID);
+    var btnEnemyRemove = pw_htmlIconButtonRemove('B');
+    var btnList = '<div class="buttons-list">'+btnFriendAdd+btnFriendRemove+btnEnemyRemove+btnEnemyAdd+'</div>';
     var btnWrapper = document.createElement('div');
     btnWrapper.className = 'profile-buttons';
     btnWrapper.innerHTML = btnList;
     return btnWrapper;
   }
+
+// https://www.torn.com/loader2.php?sid=getInAttack&user2ID=1612828
 
   /**
    * Parses a string containing HTML and returns a jQuery Object
