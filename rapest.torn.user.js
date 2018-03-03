@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.02
+// @version      2.05
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
 // @updateURL    https://github.com/paulwratt/torn-city-pwtools/raw/master/rapest.torn.user.js
 // @include      https://www.torn.com/loader.php?sid=attackLog&ID=*
+// @include      https://www.torn.com/friendlist.php*
+// @include      https://www.torn.com/blacklist.php*
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
@@ -26,51 +28,44 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    // Utilities
    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
+  var pw_cssRApestAdded = false;
   /**
-   * Creates a button in Torn-style
-   * @param  {String} text   The text of the button
-   * @return {jQuery}
+   * Creates  the Torn-style
+   * @return {null}
    */
-  function pw_htmlIconButtonAdd(text,ID) {
-    var profileButton = 'profile-button-';
-    var profileButtonColor = '';
-    var profileButtonTitle = 'RApest: ';
-    var profileButtonURL = 'https://www.torn.com/';
-    if (text == 'B') {
-      profileButton = profileButton + 'addFriend';
-      profileButtonColor = 'profile-button-black ';
-      profileButtonTitle = profileButtonTitle + 'Add to Blacklist';
-      profileButtonURL = profileButtonURL + 'blacklist.php#/p=add&amp;XID='+ID;
-    } else if (text == 'F') {
-      profileButton = profileButton + 'addFriend';
-      profileButtonTitle = profileButtonTitle + 'Add to Friendslist';
-      profileButtonURL = profileButtonURL + 'friendlist.php#/p=add&amp;XID='+ID;
-    }
-    return '<a title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
-  }
-
-  function pw_htmlIconButtonRemove(text) {
-    var profileButton = 'profile-button-';
-    var profileButtonColor = '';
-    var profileButtonTitle = 'RApest: ';
-    var profileButtonURL = 'https://www.torn.com/';
-    if (text == 'B') {
-      profileButton = profileButton + 'addEnemy';
-      profileButtonColor = 'profile-button-black ';
-      profileButtonTitle = profileButtonTitle + 'Remove from Blacklist';
-      profileButtonURL = profileButtonURL + 'blacklist.php';
-    } else if (text == 'F') {
-      profileButton = profileButton + 'addEnemy';
-      profileButtonTitle = profileButtonTitle + 'Remove from Friendslist';
-      profileButtonURL = profileButtonURL + 'friendlist.php';
-    }
-    return '<a target="rapest" title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
-  }
-
-  function pw_wrapButtons(profileID) {
+  function pw_addStyles() {
     GM_addStyle((<><![CDATA[
-.d .profile-buttons {
+.d .blacklist .expander a.user.faction, .r .blacklist .expander a.user.faction,
+.d .blacklist .expander span.user.faction, .r .blacklist .expander span.user.faction {
+    margin: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    min-width: 25px;
+}
+.d .blacklist .expander a.user.name, .r .blacklist .expander a.user.name {
+    margin: 0px;
+}
+.d .blacklist .expander a.user.name .profile-buttons {
     display: float;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+.d .blacklist .user-info-blacklist-wrap .expander {
+    width: 286px;
+}
+.r .blacklist .user-info-blacklist-wrap .expand {
+    width: 0px;
+}
+.d .blacklist .user-info-blacklist-wrap .level{
+    padding: 0px;
+    padding-top: 1px;
+    padding-right: 8px;
+}
+.r .blacklist .user-info-blacklist-wrap .acc-body .delete {
+    margin-left: 4px;
+}
+.r .blacklist .user-info-blacklist-wrap .level {
+    w idth: 103px;
 }
 .d .profile-buttons .buttons-list {
     font: inherit;
@@ -101,6 +96,9 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     pointer-events: none;
     cursor: pointer;
 }
+.d .profile-buttons .buttons-list .profile-button.profile-button-Fight.active .icon {
+    background-position: -6px -823px;
+}
 .d .profile-buttons .buttons-list .profile-button.profile-button-addFriend.active .icon {
     background-position: -7px -205px;
 }
@@ -117,6 +115,63 @@ if (!(window === window.top && $('li.logout').length === 0)) {
 }
 ]]></>).toString());
 
+    pw_cssRApestAdded = true;
+  }
+
+  /**
+   * Returns a 'Add' button in Torn-style
+   * @param  {String} t  The type of the button
+   * @param  {String} ID The torn profile XID
+   * @return {String} as HTML
+   */
+  function pw_htmlIconButtonAdd(t,ID) {
+    var profileButton = 'profile-button-';
+    var profileButtonColor = '';
+    var profileButtonTitle = 'RApest: ';
+    var profileButtonURL = 'https://www.torn.com/';
+    if (t == 'B') {
+      profileButton = profileButton + 'addFriend';
+      profileButtonColor = 'profile-button-black ';
+      profileButtonTitle = profileButtonTitle + 'Add to Blacklist';
+      profileButtonURL = profileButtonURL + 'blacklist.php#/p=add&amp;XID='+ID;
+    } else if (t == 'F') {
+      profileButton = profileButton + 'addFriend';
+      profileButtonTitle = profileButtonTitle + 'Add to Friendslist';
+      profileButtonURL = profileButtonURL + 'friendlist.php#/p=add&amp;XID='+ID;
+    }
+    return '<a title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+  }
+
+  /**
+   * Returns a 'Remove' button in Torn-style
+   * @param  {String} t  The type of the button
+   * @return {String} as HTML
+   */
+  function pw_htmlIconButtonRemove(t) {
+    var profileButton = 'profile-button-';
+    var profileButtonColor = '';
+    var profileButtonTitle = 'RApest: ';
+    var profileButtonURL = 'https://www.torn.com/';
+    if (t == 'B') {
+      profileButton = profileButton + 'addEnemy';
+      profileButtonColor = 'profile-button-black ';
+      profileButtonTitle = profileButtonTitle + 'Remove from Blacklist';
+      profileButtonURL = profileButtonURL + 'blacklist.php';
+    } else if (t == 'F') {
+      profileButton = profileButton + 'addEnemy';
+      profileButtonTitle = profileButtonTitle + 'Remove from Friendslist';
+      profileButtonURL = profileButtonURL + 'friendlist.php';
+    }
+    return '<a target="rapest" title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+'  active" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+  }
+
+  /**
+   * Creates a 'Add'/'Remove' button strip
+   * @param  {String} ID   The torn profile XID
+   * @return {Node}
+   */
+  function pw_wrapMuggedButtons(profileID) {
+    pw_addStyles();
     var btnFriendAdd = pw_htmlIconButtonAdd('F', profileID);
     var btnFriendRemove = pw_htmlIconButtonRemove('F');
     var btnEnemyAdd = pw_htmlIconButtonAdd('B', profileID);
@@ -128,7 +183,85 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     return btnWrapper;
   }
 
-// https://www.torn.com/loader2.php?sid=getInAttack&user2ID=1612828
+  function pw_writeNameListFinder(){
+    var pwScript = document.createElement('script');
+    var pwCode = document.createTextNode((<><![CDATA[
+  /**
+   * Returns a 'Fight' button in Torn-style
+   * @param  {String} t  The type of the button
+   * @param  {String} ID The torn profile XID
+   * @return {String} as HTML
+   */
+  function pw_htmlIconButton(t,ID) {
+    var profileButton = 'profile-button-';
+    var profileButtonColor = '';
+    var profileButtonTitle = 'RApest: ';
+    var profileButtonURL = 'https://www.torn.com/';
+    if (t == 'A') {
+      profileButton = profileButton + 'Fight';
+      profileButtonTitle = profileButtonTitle + 'Use ATM';
+      profileButtonURL = profileButtonURL + 'loader2.php?sid=getInAttack&amp;user2ID='+ID;
+    }
+    return '<a target=rape title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+' active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+  }
+
+  /**
+   * Creates a 'Fight' button (strip)
+   * @param  {String} ID The torn profile XID
+   * @return {Node}
+   */
+  function pw_wrapAttackButton(profileID) {
+    var btnFight = pw_htmlIconButton('A', profileID);
+    var btnList = '<div class="buttons-list">'+btnFight+'</div>';
+    var btnWrapper = document.createElement('div');
+    btnWrapper.className = 'profile-buttons';
+    btnWrapper.style.float = 'right';
+    btnWrapper.innerHTML = btnList;
+    return btnWrapper;
+  }
+
+  /**
+   * Adds in the 'Fight' buttons in the Torn-style
+   * @param  {NodeList} nl The elements of the Friend/Blacklist
+   * @return {null}
+   */
+  function pw_processNameList(nl) {
+    var isATM = -1;             // description starts with 'ATM' == 0
+    var isOK = 0;               // status OK == 1
+    var link = null;            // profile link
+    var XID = '';               // profile id
+    var newFightButton = null;  // button to insert into page
+    for (i=0; i<nl.length; i++) {
+      isATM = nl[i].getElementsByClassName('text')[0].innerText.indexOf('ATM');
+      isOK = nl[i].getElementsByClassName('t-green').length;
+      if (isATM !== -1 && isOK == 1) {
+        link = nl[i].getElementsByTagName('a')[0];
+        XID = link.href.substr(link.href.indexOf('XID=')+4);
+        newFightButton = pw_wrapAttackButton(XID);
+        link.insertBefore(newFightButton,link.childNodes[0]);
+      }
+    }
+  }
+
+  /**
+   * Find list of names, repeat every 3 seconds until found
+   * @param  {String} w Type of list ('friend' or 'black')
+   * @return {null}
+   */
+  function pw_findNameList() {
+    var nameList = document.getElementsByClassName('user-info-blacklist-wrap');
+    if (nameList.length == 0) {
+      setTimeout('pw_findNameList()',3000);
+    }else if (nameList[0].hasChildNodes()) {
+      pw_processNameList(nameList[0].children);
+    }else{
+      setTimeout('pw_findNameList()',3000);
+    }
+  }
+]]></>).toString());
+    pwScript.appendChild(pwCode);
+    document.head.appendChild(pwScript);
+  }
 
   /**
    * Parses a string containing HTML and returns a jQuery Object
@@ -185,10 +318,14 @@ if (!(window === window.top && $('li.logout').length === 0)) {
         var mugged = document.getElementsByClassName('attacking-events-mug');
         if (mugged.length > 0) {
           var muggedID = mugged[0].nextSibling.nextSibling.children[0].children[1].href.split('=')[1];
-          var newButtons = pw_wrapButtons(muggedID);
+          var newMuggedButtons = pw_wrapMuggedButtons(muggedID);
           var muggedMsg = mugged[0].nextSibling.nextSibling;
-          muggedMsg.appendChild(newButtons);
+          muggedMsg.appendChild(newMuggedButtons);
         }
+      }else if (currentPage.indexOf('torn.com/blacklist.php') !== -1 || currentPage.indexOf('torn.com/friendlist.php') !== -1) {
+        pw_addStyles();
+        pw_writeNameListFinder();
+        setTimeout('pw_findNameList()',3000);
       }
     }
 
