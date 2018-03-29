@@ -5,6 +5,8 @@ https://paulwratt.github.io/torn-city-pwtools/
 
 https://github.com/paulwratt/torn-city-pwtools/wiki
 
+**ReAttack Pest** requires specific "edit" text to work, please see wiki (link above)
+
 **NOTE:** Userscipts are for GreaseMonkey (FF), TamperMonkey (all) or ViolentMonkey (FF/Opera)
 
 ## ReAttack Pest - v2.06 - rapest.torn.user.js
