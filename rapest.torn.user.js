@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.05
+// @version      2.06
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -29,6 +29,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
   var pw_cssRApestAdded = false;
+
   /**
    * Creates  the Torn-style
    * @return {null}
@@ -98,6 +99,9 @@ if (!(window === window.top && $('li.logout').length === 0)) {
 }
 .d .profile-buttons .buttons-list .profile-button.profile-button-Fight.active .icon {
     background-position: -6px -823px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-Chain.active .icon {
+    background-position: -6px -4px;
 }
 .d .profile-buttons .buttons-list .profile-button.profile-button-addFriend.active .icon {
     background-position: -7px -205px;
@@ -186,9 +190,10 @@ if (!(window === window.top && $('li.logout').length === 0)) {
   function pw_writeNameListFinder(){
     var pwScript = document.createElement('script');
     var pwCode = document.createTextNode((<><![CDATA[
+
   /**
    * Returns a 'Fight' button in Torn-style
-   * @param  {String} t  The type of the button
+   * @param  {String} t  The type of the button (A)TM or (R)eChain
    * @param  {String} ID The torn profile XID
    * @return {String} as HTML
    */
@@ -201,6 +206,10 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       profileButton = profileButton + 'Fight';
       profileButtonTitle = profileButtonTitle + 'Use ATM';
       profileButtonURL = profileButtonURL + 'loader2.php?sid=getInAttack&amp;user2ID='+ID;
+    } else if (t == 'R') {
+      profileButton = profileButton + 'Chain';
+      profileButtonTitle = profileButtonTitle + 'ReChain';
+      profileButtonURL = profileButtonURL + 'loader2.php?sid=getInAttack&amp;user2ID='+ID;
     }
     return '<a target=rape title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+' active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
   }
@@ -210,8 +219,8 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} ID The torn profile XID
    * @return {Node}
    */
-  function pw_wrapAttackButton(profileID) {
-    var btnFight = pw_htmlIconButton('A', profileID);
+  function pw_wrapAttackButton(profileID,buttonType) {
+    var btnFight = pw_htmlIconButton(buttonType, profileID);
     var btnList = '<div class="buttons-list">'+btnFight+'</div>';
     var btnWrapper = document.createElement('div');
     btnWrapper.className = 'profile-buttons';
@@ -226,20 +235,25 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @return {null}
    */
   function pw_processNameList(nl) {
-    var isATM = -1;             // description starts with 'ATM' == 0
+    var isATM = -1;             // description contains 'ATM' == 0
+    var isFF = -1;              // description contains 'FF:' == 0
     var isOK = 0;               // status OK == 1
     var link = null;            // profile link
     var XID = '';               // profile id
+    var xBut = 'A';             // default button type (ATM)
     var newFightButton = null;  // button to insert into page
     for (i=0; i<nl.length; i++) {
       isATM = nl[i].getElementsByClassName('text')[0].innerText.indexOf('ATM');
+      isFF = nl[i].getElementsByClassName('text')[0].innerText.indexOf('FF:');
       isOK = nl[i].getElementsByClassName('t-green').length;
-      if (isATM !== -1 && isOK == 1) {
+      if (isOK == 1 && (isATM !== -1 || isFF !== -1)) {
         link = nl[i].getElementsByTagName('a')[0];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
-        newFightButton = pw_wrapAttackButton(XID);
+        if (isFF > -1) { xBut = 'R'; } // make it a ReChain button
+        newFightButton = pw_wrapAttackButton(XID,xBut);
         link.insertBefore(newFightButton,link.childNodes[0]);
       }
+      xBut = 'A'; // reset to default button type (ATM)
     }
   }
 
@@ -262,6 +276,13 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     pwScript.appendChild(pwCode);
     document.head.appendChild(pwScript);
   }
+
+// https://www.torn.com/loader2.php?sid=getInAttack&user2ID=1612828
+// console.log(document.getElementsByClassName('user-info-blacklist-wrap').length);
+// console.log(document.getElementsByClassName('user-info-blacklist-wrap')[0].children.length);
+// console.log(document.getElementsByClassName('user-info-blacklist-wrap')[0].children[9].getElementsByClassName('text')[0].innerText.indexOf('ATM')); (==0)
+// console.log(document.getElementsByClassName('user-info-blacklist-wrap')[0].children[9].getElementsByTagName('a')[0].href);
+
 
   /**
    * Parses a string containing HTML and returns a jQuery Object
