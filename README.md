@@ -5,7 +5,7 @@ https://paulwratt.github.io/torn-city-pwtools/
 
 https://github.com/paulwratt/torn-city-pwtools/wiki
 
-**NOTE:** Userscipts are for GreaseMonkey (FF), TamperMonkey (all) or ViolentMonkey (FF)
+**NOTE:** Userscipts are for GreaseMonkey (FF), TamperMonkey (all) or ViolentMonkey (FF/Opera)
 
 ## ReAttack Pest - v2.06 - rapest.torn.user.js
 Allow to add player to Friends or Black lists after being _mugged_. Allow _ReChain_ for "+3.00 fair fight" profiles in Friends or Black lists.
