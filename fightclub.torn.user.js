@@ -10,12 +10,7 @@
 // @include      https://www.torn.com/blacklist.php*
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
-// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js
-// @require      https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js
 // ==/UserScript==
-
-this.$ = this.jQuery = jQuery.noConflict(true);
 
 // only run if logged in or if in an iframe
 if (!(window === window.top && $('li.logout').length === 0)) {
@@ -103,7 +98,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     cursor: pointer;
 }
 .d .profile-buttons .buttons-list .profile-button.profile-button-Attack.active .icon {
-    background-position: -6px -823px;
+    background-position: -6px -753px;
 }
 ]]></>).toString());
     }
@@ -161,7 +156,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       if ((isOK == 1 && isRApest == -1) || (isOK == 1 && isRApest == 1 && isATM == -1 && isFF == -1)) {
         aa = nl[i].getElementsByTagName('a');
         link = aa[0];
-        if (aa.length == 2)  link = aa[1];
+        if (aa.length == 3)  link = aa[1];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         newFightClubButton = pw_wrapFightClubButton(XID);
         link.insertBefore(newFightClubButton,link.childNodes[0]);
