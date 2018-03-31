@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.08
+// @version      2.09
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -229,11 +229,11 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     var profileButtonURL = 'https://www.torn.com/';
     if (t == 'A') {
       profileButton = profileButton + 'Fight';
-      profileButtonTitle = profileButtonTitle + 'Use ATM';
+      profileButtonTitle = profileButtonTitle + 'Use ATM &lt;br&gt;Leave when Chaining';
       profileButtonURL = profileButtonURL + 'loader2.php?sid=getInAttack&amp;user2ID='+ID;
     } else if (t == 'R') {
       profileButton = profileButton + 'Chain';
-      profileButtonTitle = profileButtonTitle + 'ReChain';
+      profileButtonTitle = profileButtonTitle + 'ReChain &lt;br&gt;Leave when Chaining';
       profileButtonURL = profileButtonURL + 'loader2.php?sid=getInAttack&amp;user2ID='+ID;
     }
     return '<a target=rape title="'+profileButtonTitle+'" class="profile-button '+profileButtonColor+profileButton+' active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
