@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fight Club for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.06
+// @version      1.07
 // @description  Adds attack button to Fiends/Black lists
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
