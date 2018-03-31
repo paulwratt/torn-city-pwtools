@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fight Club for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.08
+// @version      1.09
 // @description  Adds attack button to Fiends/Black lists
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -117,7 +117,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    */
   function pw_htmlFightClubButton(ID) {
     var profileButtonURL = 'https://www.torn.com/loader2.php?sid=getInAttack&amp;user2ID='+ID;
-    return '<a target=rape title="FightClub: Attack & Leave" class="profile-button profile-button-Attack active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
+    return '<a target=rape title="FightClub: Attack &lt;br&gt;Leave when Chaining" class="profile-button profile-button-Attack active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
   }
 
   /**
