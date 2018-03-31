@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fight Club for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.07
+// @version      1.08
 // @description  Adds attack button to Fiends/Black lists
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -122,7 +122,6 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    */
   function pw_htmlFightClubButton(ID) {
     var profileButtonURL = 'https://www.torn.com/loader2.php?sid=getInAttack&amp;user2ID='+ID;
-    }
     return '<a target=rape title="FightClub: Attack & Leave" class="profile-button profile-button-Attack active right" href="'+profileButtonURL+'"><i class="icon"></i></a>';
   }
 
@@ -148,17 +147,24 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    */
   function pw_FCprocessNameList(nl) {
     var isRApest = (typeof pw_RApest == 'undefined' ? -1 : 1);  // is RApest Userscript present
-    var isATM = -1;                                            // description contains 'ATM' >= 0
-    var isFF = -1;                                             // description contains 'FF:' >= 0
-    var isOK = 0;                                              // status OK == 1
-    var link = null;                                           // profile link
-    var XID = '';                                              // profile id
-    var newFightClubButton = null;                             // button to insert into page
+    var isATM = -1;                                             // description contains 'ATM' >= 0
+    var isFF = -1;                                              // description contains 'FF:' >= 0
+    var isOK = 0;                                               // status OK == 1
+    var aa = null;                                              // anchor array
+    var link = null;                                            // profile link
+    var XID = '';                                               // profile id
+    var newFightClubButton = null;                              // button to insert into page
     for (i=0; i<nl.length; i++) {
       isATM = nl[i].getElementsByClassName('text')[0].innerText.indexOf('ATM');
       isFF = nl[i].getElementsByClassName('text')[0].innerText.indexOf('FF:');
       isOK = nl[i].getElementsByClassName('t-green').length;
       if ((isOK == 1 && isRApest == -1) || (isOK == 1 && isRApest == 1 && isATM == -1 && isFF == -1)) {
+        aa = nl[i].getElementsByTagName('a');
+        if (aa.length == 1)
+          link = nl[i].getElementsByTagName('a')[0];
+        }else{
+          link = nl[i].getElementsByTagName('a')[1];
+        }
         link = nl[i].getElementsByTagName('a')[0];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         newFightClubButton = pw_wrapFightClubButton(XID);
