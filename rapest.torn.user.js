@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.06
+// @version      2.07
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -28,14 +28,38 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    // Utilities
    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-  var pw_cssRApestAdded = false;
-
   /**
    * Creates  the Torn-style
    * @return {null}
    */
-  function pw_addStyles() {
-    GM_addStyle((<><![CDATA[
+  function pw_RAaddStyles() {
+    var isFCuser = (typeof pwFightClub == 'undefined' ? -1 : 1);  // is FightClub Userscript present
+    if ( isFCuser == 1 ) {
+      GM_addStyle((<><![CDATA[
+.d .profile-buttons .buttons-list .profile-button.profile-button-Fight.active .icon {
+    background-position: -6px -823px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-Chain.active .icon {
+    background-position: -6px -4px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-addFriend.active .icon {
+    background-position: -7px -205px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-addEnemy.active .icon {
+    background-position: -7px -239px;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-addFriend.disabled .icon {
+    background-position: -294px -84px;
+    cursor: default;
+}
+.d .profile-buttons .buttons-list .profile-button.profile-button-addEnemy.disabled .icon {
+    background-position: -336px -84px;
+    cursor: default;
+}
+}
+]]></>).toString());
+    } else {
+      GM_addStyle((<><![CDATA[
 .d .blacklist .expander a.user.faction, .r .blacklist .expander a.user.faction,
 .d .blacklist .expander span.user.faction, .r .blacklist .expander span.user.faction {
     margin: 0px;
@@ -118,8 +142,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     cursor: default;
 }
 ]]></>).toString());
-
-    pw_cssRApestAdded = true;
+    }
   }
 
   /**
@@ -128,7 +151,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} ID The torn profile XID
    * @return {String} as HTML
    */
-  function pw_htmlIconButtonAdd(t,ID) {
+  function pw_RAhtmlIconButtonAdd(t,ID) {
     var profileButton = 'profile-button-';
     var profileButtonColor = '';
     var profileButtonTitle = 'RApest: ';
@@ -151,7 +174,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} t  The type of the button
    * @return {String} as HTML
    */
-  function pw_htmlIconButtonRemove(t) {
+  function pw_RAhtmlIconButtonRemove(t) {
     var profileButton = 'profile-button-';
     var profileButtonColor = '';
     var profileButtonTitle = 'RApest: ';
@@ -174,12 +197,12 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} ID   The torn profile XID
    * @return {Node}
    */
-  function pw_wrapMuggedButtons(profileID) {
-    pw_addStyles();
-    var btnFriendAdd = pw_htmlIconButtonAdd('F', profileID);
-    var btnFriendRemove = pw_htmlIconButtonRemove('F');
-    var btnEnemyAdd = pw_htmlIconButtonAdd('B', profileID);
-    var btnEnemyRemove = pw_htmlIconButtonRemove('B');
+  function pw_RAwrapMuggedButtons(profileID) {
+    pw_RAaddStyles();
+    var btnFriendAdd = pw_RAhtmlIconButtonAdd('F', profileID);
+    var btnFriendRemove = pw_RAhtmlIconButtonRemove('F');
+    var btnEnemyAdd = pw_RAhtmlIconButtonAdd('B', profileID);
+    var btnEnemyRemove = pw_RAhtmlIconButtonRemove('B');
     var btnList = '<div class="buttons-list">'+btnFriendAdd+btnFriendRemove+btnEnemyRemove+btnEnemyAdd+'</div>';
     var btnWrapper = document.createElement('div');
     btnWrapper.className = 'profile-buttons';
@@ -187,17 +210,19 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     return btnWrapper;
   }
 
-  function pw_writeNameListFinder(){
+  function pw_RAwriteNameListFinder(){
     var pwScript = document.createElement('script');
     var pwCode = document.createTextNode((<><![CDATA[
 
+  var pw_RApest = true;
+  
   /**
    * Returns a 'Fight' button in Torn-style
    * @param  {String} t  The type of the button (A)TM or (R)eChain
    * @param  {String} ID The torn profile XID
    * @return {String} as HTML
    */
-  function pw_htmlIconButton(t,ID) {
+  function pw_RAhtmlIconButton(t,ID) {
     var profileButton = 'profile-button-';
     var profileButtonColor = '';
     var profileButtonTitle = 'RApest: ';
@@ -219,8 +244,8 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} ID The torn profile XID
    * @return {Node}
    */
-  function pw_wrapAttackButton(profileID,buttonType) {
-    var btnFight = pw_htmlIconButton(buttonType, profileID);
+  function pw_RAwrapAttackButton(profileID,buttonType) {
+    var btnFight = pw_RAhtmlIconButton(buttonType, profileID);
     var btnList = '<div class="buttons-list">'+btnFight+'</div>';
     var btnWrapper = document.createElement('div');
     btnWrapper.className = 'profile-buttons';
@@ -234,7 +259,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {NodeList} nl The elements of the Friend/Blacklist
    * @return {null}
    */
-  function pw_processNameList(nl) {
+  function pw_RAprocessNameList(nl) {
     var isATM = -1;             // description contains 'ATM' == 0
     var isFF = -1;              // description contains 'FF:' == 0
     var isOK = 0;               // status OK == 1
@@ -250,7 +275,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
         link = nl[i].getElementsByTagName('a')[0];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         if (isFF > -1) { xBut = 'R'; } // make it a ReChain button
-        newFightButton = pw_wrapAttackButton(XID,xBut);
+        newFightButton = pw_RAwrapAttackButton(XID,xBut);
         link.insertBefore(newFightButton,link.childNodes[0]);
       }
       xBut = 'A'; // reset to default button type (ATM)
@@ -262,14 +287,14 @@ if (!(window === window.top && $('li.logout').length === 0)) {
    * @param  {String} w Type of list ('friend' or 'black')
    * @return {null}
    */
-  function pw_findNameList() {
+  function pw_RAfindNameList() {
     var nameList = document.getElementsByClassName('user-info-blacklist-wrap');
     if (nameList.length == 0) {
-      setTimeout('pw_findNameList()',3000);
+      setTimeout('pw_RAfindNameList()',3000);
     }else if (nameList[0].hasChildNodes()) {
-      pw_processNameList(nameList[0].children);
+      pw_RAprocessNameList(nameList[0].children);
     }else{
-      setTimeout('pw_findNameList()',3000);
+      setTimeout('pw_RAfindNameList()',3000);
     }
   }
 ]]></>).toString());
@@ -339,14 +364,14 @@ if (!(window === window.top && $('li.logout').length === 0)) {
         var mugged = document.getElementsByClassName('attacking-events-mug');
         if (mugged.length > 0) {
           var muggedID = mugged[0].nextSibling.nextSibling.children[0].children[1].href.split('=')[1];
-          var newMuggedButtons = pw_wrapMuggedButtons(muggedID);
+          var newMuggedButtons = pw_RAwrapMuggedButtons(muggedID);
           var muggedMsg = mugged[0].nextSibling.nextSibling;
           muggedMsg.appendChild(newMuggedButtons);
         }
       }else if (currentPage.indexOf('torn.com/blacklist.php') !== -1 || currentPage.indexOf('torn.com/friendlist.php') !== -1) {
         pw_addStyles();
-        pw_writeNameListFinder();
-        setTimeout('pw_findNameList()',3000);
+        pw_RAwriteNameListFinder();
+        setTimeout('pw_RAfindNameList()',3000);
       }
     }
 
