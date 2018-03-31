@@ -160,12 +160,8 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       isOK = nl[i].getElementsByClassName('t-green').length;
       if ((isOK == 1 && isRApest == -1) || (isOK == 1 && isRApest == 1 && isATM == -1 && isFF == -1)) {
         aa = nl[i].getElementsByTagName('a');
-        if (aa.length == 1)
-          link = nl[i].getElementsByTagName('a')[0];
-        }else{
-          link = nl[i].getElementsByTagName('a')[1];
-        }
-        link = nl[i].getElementsByTagName('a')[0];
+        link = aa[0];
+        if (aa.length == 2)  link = aa[1];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         newFightClubButton = pw_wrapFightClubButton(XID);
         link.insertBefore(newFightClubButton,link.childNodes[0]);
