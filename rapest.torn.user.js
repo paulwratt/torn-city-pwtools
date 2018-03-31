@@ -275,7 +275,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       if (isOK == 1 && (isATM !== -1 || isFF !== -1)) {
         aa = nl[i].getElementsByTagName('a');
         link = aa[0];
-        if (aa.length == 2)  link = aa[1];
+        if (aa.length == 3)  link = aa[1];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         if (isFF > -1) { xBut = 'R'; } // make it a ReChain button
         newFightButton = pw_RAwrapAttackButton(XID,xBut);
