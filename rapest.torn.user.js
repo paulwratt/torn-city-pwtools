@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.07
+// @version      2.08
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -263,6 +263,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     var isATM = -1;             // description contains 'ATM' == 0
     var isFF = -1;              // description contains 'FF:' == 0
     var isOK = 0;               // status OK == 1
+    var aa = null;              // anchor array
     var link = null;            // profile link
     var XID = '';               // profile id
     var xBut = 'A';             // default button type (ATM)
@@ -272,7 +273,9 @@ if (!(window === window.top && $('li.logout').length === 0)) {
       isFF = nl[i].getElementsByClassName('text')[0].innerText.indexOf('FF:');
       isOK = nl[i].getElementsByClassName('t-green').length;
       if (isOK == 1 && (isATM !== -1 || isFF !== -1)) {
-        link = nl[i].getElementsByTagName('a')[0];
+        aa = nl[i].getElementsByTagName('a');
+        link = aa[0];
+        if (aa.length == 2)  link = aa[1];
         XID = link.href.substr(link.href.indexOf('XID=')+4);
         if (isFF > -1) { xBut = 'R'; } // make it a ReChain button
         newFightButton = pw_RAwrapAttackButton(XID,xBut);
