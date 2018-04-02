@@ -1,7 +1,7 @@
 /*
-tc.torn.js - generic script insert for Torn City
-             builds an object from current page data (that has side-panel)
-             uses jQuery to find objects
+tc.torn.js - generic object reference for Torn City
+  builds an object from current page data (that has side-panel),
+  using jQuery to find those objects, attaches "change" watchers
 see: https://github.com/paulwratt/torn-city-pwtools/master/tc.torn.js.md
 */
 
