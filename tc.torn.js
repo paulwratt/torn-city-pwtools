@@ -5,7 +5,7 @@ tc.torn.js - generic object reference for Torn City
 see: https://github.com/paulwratt/torn-city-pwtools/master/tc.torn.js.md
 */
 
-var tc = { ver: 1, debug: false, long: false, scripts: false, timers: true, t: 0,
+var tc = { ver: 1, debug: false, long: false, scripts: false, timers: false, t: 0,
        p: { n: '', id: '0', d: 0, l: { l: 0, u: false }, p: 0, m: 0,  }, 
        e: { c:0, m:0, t: '0:00' }, n: { c:0, m:0, t: '0:00' }, h: { c:0, m:0, t: '0:00' }, l: { c:0, m:0, t: '0:00' },
        f: { id: '0', c: { c: 0, m : 0, t: '0:00' } },
