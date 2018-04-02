@@ -47,4 +47,4 @@ var config = { characterData:true };
 // pass in the target node, as well as the observer options
 observer.observe(chainTimer, config);
 
-// ref: https://github.com/paulwratt/torn-city-pwtools/raw/master/tc.torn.js.md
+// https://github.com/paulwratt/torn-city-pwtools/raw/master/tc.torn.js
