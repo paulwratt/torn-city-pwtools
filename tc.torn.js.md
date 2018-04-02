@@ -44,7 +44,7 @@ tc.f.id  = tornCity.factoin.id = faction profile id (num) (0 if not in faction)
 tc.f.c.c = tornCity.faction.chain.cur = current chain (num)
 tc.f.c.m = tornCity.faction.chain.max = maximum chain (num)
 tc.f.c.t = tornCity.faction.chain.timer = chain timer (str)
-tc.s.*   = tornCity.player.scripts.* = array of objects, Userscripts & Extensions
+tc.s.*   = tornCity.scripts.* = array of known Userscripts & Extensions currently running
 ```
 
 setting `tc.debug` to `true` will output info to the console, as it happens.
@@ -53,6 +53,6 @@ setting `tc.long` to `true` will generate `tornCity.*` with long form names of `
 
 setting `tc.scripts` to `true` will try to detect any know torn scripts. 
 
-setting `tc.scripts` to `true` will attach _timer_ watchers, as well as _value_ watchers.
+setting `tc.timers` to `true` will attach _timer_ watchers, as well as _value_ watchers.
 
 If `tc.timers` is false, then all `*.t` and `*.timer` values will be `'0:00'`.
