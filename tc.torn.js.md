@@ -12,8 +12,9 @@ or via Userscript:
 @require      https://github.com/paulwratt/torn-city-pwtools/raw/master/tc.torn.js`
 ```
 
-generates short form, and optionally a long form, generic reference object:
+generates short form, and optionally a long form, generic Torn City reference object, without the need for an API key:
 ```javascript
+tc.ver   = 1 - version of tc/tornCity objects
 tc.debug = false - console output (bool)
 tc.long  = false - generate long form objects (bool)
 tc.scripts = false - detect Userscripts & Extensions
@@ -37,12 +38,11 @@ tc.h.t   = tornCity.happy.timer = happy timer (str)
 tc.l.c   = tornCity.life.cur = current life (num)
 tc.l.m   = tornCity.life.max = maximum life (num)
 tc.l.t   = tornCity.life.timer = life timer (str)
-tc.f.id  = tornCity.factoin.id = faction profile id (num)
+tc.f.id  = tornCity.factoin.id = faction profile id (num) (0 if not in faction)
 tc.f.c.c = tornCity.faction.chain.cur = current chain (num)
 tc.f.c.m = tornCity.faction.chain.max = maximum chain (num)
 tc.f.c.t = tornCity.faction.chain.timer = chain timer (str)
-tc.f     = t.f.id == '0' if not in faction
-tc.s.* = tornCity.player.scripts.* = array of objects, Userscripts & Extensions
+tc.s.*   = tornCity.player.scripts.* = array of objects, Userscripts & Extensions
 ```
 
 setting `tc.debug` to `true` will output info to the console, as it happens.
