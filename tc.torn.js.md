@@ -52,3 +52,7 @@ setting `tc.debug` to `true` will output info to the console, as it happens.
 setting `tc.long` to `true` will generate `tornCity.*` with long form names of `tc.*`.
 
 setting `tc.scripts` to `true` will try to detect any know torn scripts. 
+
+setting `tc.scripts` to `true` will attach _timer_ watchers, as well as _value_ watchers.
+
+If `tc.timers` is false, then all `*.t` and `*.timer` values will be `'0:00'`.
