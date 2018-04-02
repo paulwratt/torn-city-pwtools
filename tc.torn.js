@@ -2,36 +2,37 @@
 tc.torn.js - generic script insert for Torn City
 builds an object from current page data (that has side-panel)
 
-tc.t     = tornCity.time = Torn City time
-tc.p.n   = tornCity.player.name = player name
-tc.p.id  = tornCity.player.id = player profile id
-tc.p.d   = tornCity.player.money = current $'s
-tc.p.l.l = tornCity.player.level.lvl = current level
-tc.p.l.u = tornCity.player.level.up = can level up
-tc.p.p   = tornCity.player.points = available TC points
-tc.p.m   = tornCity.player.merits = available TC merits
-tc.p.s.* = tornCity.player.scripts.* = array of objects, identify current Userscripts & Extensions
-tc.e.c   = tornCity.energy.cur = current energy
-tc.e.m   = tornCity.energy.max = maximum energy
-tc.n.c   = tornCity.nerve.cur = current nerve
-tc.n.m   = tornCity.nerve.max = maximum nerve
-tc.h.c   = tornCity.happy.cur = current happy
-tc.h.m   = tornCity.happy.max = maximum happy
-tc.l.c   = tornCity.life.cur = current life
-tc.l.m   = tornCity.life.max = maximum life
-tc.f.c.c = tornCity.faction.chain.cur = current chain
-tc.f.c.m = tornCity.faction.chain.max = maximum chain
-tc.f.id  = tornCity.factoin.id = faction profile id
-tc.f     = t.f.id == '0' if not in faction
+see: https://github.com/paulwratt/torn-city-pwtools/raw/master/tc.torn.js.md
 
 */
 
-tc = { debug: false, long: false, t: 0,
+var tc = { debug: false, long: false, t: 0,
        p: { n: '', id: '0', d: 0, l: { l: 0, u: false }, p: 0, m: 0, s: {},  }, 
        e: { c:0, m:0, t: '0:00' }, n: { c:0, m:0, t: '0:00' }, h: { c:0, m:0, t: '0:00' }, l: { c:0, m:0, t: '0:00' },
        f: { id: '0', c: { c: 0, m : 0, t: '0:00' } }
      };
-tornCity = {};
+
+var tornCity = null;
+
+function tc_LongForm() {
+  tornCity = { time: 0, 
+               player: { name: '', 
+                         id: '',
+                         money: 0,
+                         level:   { lvl: 0, up: false },
+                         points: 0,
+                         merits: 0,
+                         scripts: {},
+                       },
+               energy:  { cur: 0, max: 0, time: '0:00' },
+               nerve:   { cur: 0, max: 0, time: '0:00' },
+               happy:   { cur: 0, max: 0, time: '0:00' },
+               life:    { cur: 0, max: 0, time: '0:00' },
+               faction: { id: 0,
+                          chain: { cur: 0, max: 0, time: '0:00' }
+                        }
+             };
+}
 
 // find chain timer object
 var energyValue = $('#barEnergy').find("p[class^='bar-value']").get(0);
