@@ -18,6 +18,7 @@ tc.ver   = 1 - version of tc/tornCity objects
 tc.debug = false - console output (bool)
 tc.long  = false - generate long form objects (bool)
 tc.scripts = false - detect Userscripts & Extensions
+tc.timers  = true  - attack timer watchers
 tc.t     = tornCity.time = Torn City time (UTC)
 tc.p.n   = tornCity.player.name = player name (str)
 tc.p.id  = tornCity.player.id = player profile id (num)
