@@ -26,11 +26,12 @@ tc.f     = t.f.id == '0' if not in faction
 
 */
 
-tc = { t: 0,
+tc = { debug: false, long: false, t: 0,
        p: { n: '', id: '0', d: 0, l: { l: 0, u: false }, p: 0, m: 0, s: {},  }, 
-       e: { c:0, m:0 }, n: { c:0, m:0 }, h: { c:0, m:0 }, l: { c:0, m:0 },
-       f: { id: '0', c: { c: 0, m : 0, t: '0:00'} }
+       e: { c:0, m:0, t: '0:00' }, n: { c:0, m:0, t: '0:00' }, h: { c:0, m:0, t: '0:00' }, l: { c:0, m:0, t: '0:00' },
+       f: { id: '0', c: { c: 0, m : 0, t: '0:00' } }
      };
+tornCity = {};
 
 // find chain timer object
 var energyValue = $('#barEnergy').find("p[class^='bar-value']").get(0);
