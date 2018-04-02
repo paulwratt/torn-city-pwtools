@@ -1,5 +1,7 @@
 ## tc.torn.js - generic object reference for Torn City
-Inserts a script block into current torn page, builds an object from current page data (that has side-panel), using _jQuery_ to find those objects. Can be manually inserted via object construction:
+Inserts a script block into current torn page, builds an object from current page data (that has side-panel), using _jQuery_ to find those objects, attaches "change" watchers.
+
+Can be manually inserted via object construction:
 ```javascript
 var tcScript = document.createElement('script');
 tcScript.src = 'https://github.com/paulwratt/torn-city-pwtools/raw/master/tc.torn.js';
@@ -17,7 +19,7 @@ tc.ver   = 1 - version of tc/tornCity objects
 tc.debug = false - console output (bool)
 tc.long  = false - generate long form objects (bool)
 tc.scripts = false - detect Userscripts & Extensions
-tc.timers  = true  - attack timer watchers
+tc.timers  = false - attack timer watchers
 tc.t     = tornCity.time = Torn City time (UTC)
 tc.p.n   = tornCity.player.name = player name (str)
 tc.p.id  = tornCity.player.id = player profile id (num)
