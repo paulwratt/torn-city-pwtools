@@ -1,4 +1,4 @@
-## tc.torn.js - generic script insert for Torn City
+## tc.torn.js - generic object reference for Torn City
 Inserts a script block into current torn page, builds an object from current page data (that has side-panel), using _jQuery_ to find those objects. Can be manually inserted via object construction:
 ```javascript
 var tcScript = document.createElement('script');
