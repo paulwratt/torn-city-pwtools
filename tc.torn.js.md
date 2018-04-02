@@ -15,7 +15,7 @@ generates a long form or a short form generic reference object:
 tc.t     = tornCity.time = Torn City time
 tc.p.n   = tornCity.player.name = player name
 tc.p.id  = tornCity.player.id = player profile id
-tc.p.d   = tornCity.player.money = current $'s
+tc.p.d   = tornCity.player.money = current money
 tc.p.l.l = tornCity.player.level.lvl = current level
 tc.p.l.u = tornCity.player.level.up = can level up
 tc.p.p   = tornCity.player.points = available TC points
