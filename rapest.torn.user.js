@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.09
+// @version      2.10
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -372,7 +372,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
           muggedMsg.appendChild(newMuggedButtons);
         }
       }else if (currentPage.indexOf('torn.com/blacklist.php') !== -1 || currentPage.indexOf('torn.com/friendlist.php') !== -1) {
-        pw_addStyles();
+        pw_RAaddStyles();
         pw_RAwriteNameListFinder();
         setTimeout('pw_RAfindNameList()',3000);
       }
