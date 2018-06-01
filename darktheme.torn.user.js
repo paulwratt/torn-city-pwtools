@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.03
+// @version      1.04
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -34,6 +34,8 @@
       '.d a.user.name, .d a.user.faction, .d .t-blue-cont a, .d .t-blue a, .d .t-blue { color: #57a1c5 !important; }' +
       'div.profile-sign a { color: #57a1c5 !important; text-decoration: none !important; }' +
       'div.profile-sign a:visited { color: #c57557 !important; text-decoration: none !important; }' +
+// patches for TornStats
+      'div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a { color: #57a1c5 !important; text-decoration: none !important; }' +
       ''
     );
   }
