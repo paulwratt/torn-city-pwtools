@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.04
+// @version      1.05
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -27,6 +27,8 @@
       '.d .users-list>li:hover { background: #828282 !important; }' +
       '.d .travel-agency-travelling .stage>div.fade-left, .d .travel-agency-travelling .stage>div.fade-right { display: none !important; }' +
       '.d .forums-thread-wrap .thread-list>li .post-delimiter { background: #626262 !important; }' +
+      '.d .container-body { background: #626262 !important; }' +
+      '.d .container-body:hover { background: #828282 !important; }' +
 //    '.d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }' +
       '.d .action-log .log-list li .message-wrap { background: #626262 !important; }' +
 // below are tweaks
