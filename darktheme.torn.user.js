@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.06
+// @version      1.07
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -29,6 +29,8 @@
       '.d .forums-thread-wrap .thread-list>li .post-delimiter { background: #626262 !important; }' +
       '.d .container-body { background: #626262 !important; }' +
       '.d .container-body:hover { background: #828282 !important; }' +
+      '.d .faction-main-wrap .title-toggle.active+.cont-toggle a { color: #57a1c5 !important; text-decoration: none !important; pointer: }' +
+      '.d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited { color: #c57557 !important; text-decoration: none !important; }' +
 //    '.d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }' +
       '.d .action-log .log-list li .message-wrap { background: #626262 !important; }' +
       '.d .sortable-list .info-cont-wrap .divider span { background: #626262 !important; }' +
@@ -51,6 +53,8 @@
       'div.profile-sign a:visited { color: #c57557 !important; text-decoration: none !important; }' +
 // patches for TornStats
       'div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a { color: #57a1c5 !important; text-decoration: none !important; }' +
+// patches for DocTorn
+      '.d .sortable-list .doctorn-widget__body .info-cont-wrap .divider span{ background: rgb(242, 242, 242) !important; }' +
       ''
     );
   }
