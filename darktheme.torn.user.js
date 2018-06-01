@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.02
+// @version      1.03
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -30,8 +30,10 @@
 //    '.d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }' +
       '.d .action-log .log-list li .message-wrap { background: #626262 !important; }' +
 // below are tweaks
-      '.d .forums-thread-wrap .thread-list .column-wrap .poster-wrap { background: #525252 !important; }' +
-      '.d a.user.name, .d a.user.faction, .d .t-blue-cont a, .d .t-blue a, .d .t-blue { color: #00F !important; }' +
+      '.d .forums-thread-wrap .thread-list .column-wrap .poster-wrap { background: #424242 !important; }' +
+      '.d a.user.name, .d a.user.faction, .d .t-blue-cont a, .d .t-blue a, .d .t-blue { color: #57a1c5 !important; }' +
+      'div.profile-sign a { color: #57a1c5 !important; text-decoration: none !important; }' +
+      'div.profile-sign a:visited { color: #c57557 !important; text-decoration: none !important; }' +
       ''
     );
   }
