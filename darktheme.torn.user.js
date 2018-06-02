@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.12
+// @version      1.13
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -50,6 +50,8 @@
       '.d .properties-list>li { background-color: #525252 !important; }' +
       '.d .properties-list>li:hover { background-color: #626262 !important; }' +
       '.d .properties-list>li.act { background-color: #828282 !important; }' +
+      '.d .quick-links-wrap .columns > li .rows > li:hover { background-color: #828282 !important; }' +
+      '.d .quick-links-wrap .columns > li .rows > li.title { background-color: #525252 !important; }' +
       '.d .sortable-list .info-cont-wrap .divider span { background: #626262 !important; }' +
 // sidebar
       '#sidebar>div>div>div>div>div>div { background: #525252 !important; }'+
