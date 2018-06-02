@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.07
+// @version      1.08
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -31,6 +31,15 @@
       '.d .container-body:hover { background: #828282 !important; }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a { color: #57a1c5 !important; text-decoration: none !important; pointer: }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited { color: #c57557 !important; text-decoration: none !important; }' +
+      '.d .chain-attacks-title { background-color: #626262 !important; }' +
+      '.d .chain-attacks-list { background-color: #525252 !important; }' +
+      '.d .f-war-list.war-new>li { background-color: #525252 !important; }' +
+      '.d .f-war-list.war-new>li:hover { background-color: #626262 !important; }' +
+      '.d .f-war-list.war-new>li.inactive, .d .f-war-list.war-new>li.inactive:hover { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }' +
+      '.d .f-war-list.war-new .faction-war-info { background-color: #525252 !important; }' +
+      '.d .f-war-list.war-new .faction-names { background-color: #626262 !important; }' +
+      '.d .f-war-list.war-new .faction-war .tab-menu-cont .members-list { background-color: #525252 !important; }' +
+      '.d .f-war-list.war-new .faction-war .tab-menu-cont .members-cont:not(.profile-mode) .join:hover { background: #626262 !important; }' +
 //    '.d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }' +
       '.d .action-log .log-list li .message-wrap { background: #626262 !important; }' +
       '.d .sortable-list .info-cont-wrap .divider span { background: #626262 !important; }' +
@@ -51,6 +60,7 @@
       '.d a.user.name, .d a.user.faction, .d .t-blue-cont a, .d .t-blue a, .d .t-blue { color: #57a1c5 !important; }' +
       'div.profile-sign a { color: #57a1c5 !important; text-decoration: none !important; }' +
       'div.profile-sign a:visited { color: #c57557 !important; text-decoration: none !important; }' +
+      '.d .f-war-list.war-new .faction-war .tab-menu-cont .members-list .level { color:#323232 !important; }'+
 // patches for TornStats
       'div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a { color: #57a1c5 !important; text-decoration: none !important; }' +
 // patches for DocTorn
