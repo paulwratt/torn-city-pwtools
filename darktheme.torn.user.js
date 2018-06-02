@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.13
+// @version      1.14
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -52,6 +52,16 @@
       '.d .properties-list>li.act { background-color: #828282 !important; }' +
       '.d .quick-links-wrap .columns > li .rows > li:hover { background-color: #828282 !important; }' +
       '.d .quick-links-wrap .columns > li .rows > li.title { background-color: #525252 !important; }' +
+      '.d .items-wrap .items-footer { background-color: #525252 !important; }' +
+      '.d .items-wrap .items-cont>li { background-color: #626262 !important; }' +
+      '.d .items-wrap .items-cont>li:hover { background-color: #828282 !important; }' +
+      '.d .items-wrap .items-cont>li.disabled { background-color: #525252 !important; }' +
+      '.d .armoury-tabs .item-list>li.item-give-act, .d .armoury-tabs .item-list>li.item-loan-act, .d .armoury-tabs .item-list>li.item-retrieve-act, ' +
+      '.d .armoury-tabs .item-list>li.item-info-act, .d .armoury-tabs .item-list>li.item-use-act ' +
+      ' { background-color: #828282 !important; }' +
+      '.d .armoury-tabs .item-list .item-action .give.active, .d .armoury-tabs .item-list .item-action .loan.active, ' +
+      '.d .armoury-tabs .item-list .item-action .retrieve.active, .d .armoury-tabs .item-list .item-action .use.active' +
+      ' { color: #57a1c5 !important; }' +
       '.d .sortable-list .info-cont-wrap .divider span { background: #626262 !important; }' +
 // sidebar
       '#sidebar>div>div>div>div>div>div { background: #525252 !important; }'+
