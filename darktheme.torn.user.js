@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.17
+// @version      1.18
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -34,6 +34,16 @@
       '.d .fm-list>li { background: #626262 !important; }' +
       '.d .fm-list>li.new { background: #525252 !important; }' +
       '.d .fm-list>li:hover { background: #828282 !important; }' +
+// white gradient bars/buttons
+//    '.d .white-grad, .d .white-grad-tabs>li, .d .white-grad-tabs>li.disabled:hover, .d .white-grad-tabs>li.ui-state-disabled:hover, .d .fm-list>li.new, ' +
+//    '.d .thread-list .action-wrap>li, .d .thread-list .action-wrap>li.like.disabled:hover, .d .thread-list .action-wrap>li.dislike.disabled:hover, ' +
+//    '.d .forums-thread-wrap .action-wrap>li.quote.disabled:hover, .d .forums-thread-wrap .action-wrap>li.report.disabled:hover, '+
+//    '.d .forums-thread-wrap .action-wrap>li.edit.disabled:hover, .d .forums-thread-wrap .action-wrap>li.lock.disabled:hover, ' +
+//    '.d .forums-thread-wrap .action-wrap>li.delete.disabled:hover, .d .forums-thread-wrap .action-wrap>li.move.disabled:hover, ' +
+//    '.d .forums-thread-wrap .action-wrap>li.ban.disabled:hover, .d .customize-items-list>li>span, ' +
+//    '.d .content-wrapper.logged-out-sidebar .thread-list .action-wrap>li:hover, .d .stock-main-wrap .stock-list .item .ui-accordion-header-active, ' +
+//    '.d .stock-main-wrap .stock-list .item .stock-tabs>li.ui-tabs-active, .d .sortable-list .latest-messages .list-cont-bg>li.new ' +
+      '.d .white-grad { background: linear-gradient(to bottom,#626262 0,#525252 100%) !important; }' +
 // fixups
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a { color: #57a1c5 !important; text-decoration: none !important; pointer: }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited { color: #c57557 !important; text-decoration: none !important; }' +
