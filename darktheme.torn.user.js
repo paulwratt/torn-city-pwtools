@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.22
+// @version      1.23
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -45,9 +45,6 @@
 //    '.d .stock-main-wrap .stock-list .item .stock-tabs>li.ui-tabs-active, .d .sortable-list .latest-messages .list-cont-bg>li.new ' +
       '.d .white-grad { background: linear-gradient(to bottom,#626262 0,#525252 100%) !important; }' +
 // fixups
-      '.d .faction-controls-wrap  { background-color: #626262 !important; }' +
-      '.d .faction-controls-wrap .control-tabs>li.ui-state-disabled a:hover, .d .faction-controls-wrap .control-tabs>li.ui-state-disabled a { background-color: #525252 !important; }' +
-      '.d .faction-controls-wrap .control-tabs>li a:hover, .d .faction-controls-wrap .control-tabs>li.ui-tabs-active a { background-color: #828282 !important; }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a { color: #57a1c5 !important; text-decoration: none !important; pointer: }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited { color: #c57557 !important; text-decoration: none !important; }' +
       '.d .chain-attacks-title { background-color: #626262 !important; }' +
@@ -59,6 +56,29 @@
       '.d .f-war-list.war-new .faction-names { background-color: #626262 !important; }' +
       '.d .f-war-list.war-new .faction-war .tab-menu-cont .members-list { background-color: #525252 !important; }' +
       '.d .f-war-list.war-new .faction-war .tab-menu-cont .members-cont:not(.profile-mode) .join:hover { background: #626262 !important; }' +
+      '.d .faction-crimes-wrap .crimes-list .item-wrap.active, .d .faction-crimes-wrap .crimes-list .item-wrap.active .details-wrap, ' +
+      '.d .faction-crimes-wrap .begin-wrap .crimes-list .item-wrap.active, .d .faction-crimes-wrap .begin-wrap .crimes-list .item-wrap.active .plans-wrap' +
+      ' { background-color: #525252 !important; }' +
+      '.d .armoury-tabs .item-list>li.item-give-act, .d .armoury-tabs .item-list>li.item-loan-act, .d .armoury-tabs .item-list>li.item-retrieve-act, ' +
+      '.d .armoury-tabs .item-list>li.item-info-act, .d .armoury-tabs .item-list>li.item-use-act ' +
+      ' { background-color: #828282 !important; }' +
+      '.d .armoury-tabs .item-list .item-action .give.active, .d .armoury-tabs .item-list .item-action .loan.active, ' +
+      '.d .armoury-tabs .item-list .item-action .retrieve.active, .d .armoury-tabs .item-list .item-action .use.active' +
+      ' { color: #57a1c5 !important; }' +
+      '.d .faction-controls-wrap  { background-color: #626262 !important; }' +
+      '.d .faction-controls-wrap .control-tabs>li.ui-state-disabled a:hover, .d .faction-controls-wrap .control-tabs>li.ui-state-disabled a { background-color: #525252 !important; }' +
+      '.d .faction-controls-wrap .control-tabs>li a:hover, .d .faction-controls-wrap .control-tabs>li.ui-tabs-active a { background-color: #828282 !important; }' +
+      '.d .items-wrap .items-footer { background-color: #525252 !important; }' +
+      '.d .items-wrap .items-cont>li { background-color: #626262 !important; }' +
+      '.d .items-wrap .items-cont>li:hover { background-color: #828282 !important; }' +
+      '.d .items-wrap .items-cont>li.disabled { background-color: #525252 !important; }' +
+      '.d .items-wrap .items-cont>li.act { background-color: #828282 !important; }' +
+      '.d .show-item-info .item-cont .item-wrap { background-color: #828282 !important; }' +
+      '.d .info-cont li, .d .additional-info li { background-color: #828282 !important; }' +
+      '.d .info-wrap .t-delimiter { background: linear-gradient(to bottom,#828282 0,rgba(242,242,242,0) 100%) !important; }' +
+      '.d .info-wrap .b-delimiter { background: linear-gradient(to bottom,rgba(242,242,242,0) 0,#828282 100%) !important; }' +
+      '.d .show-item-info .item-cont .info-msg { background-color: #828282 !important; }' +
+      '.d .items-list>li.act { background-color: #828282 !important; }' +
 //    '.d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }' +
       '.d .action-log .log-list li .message-wrap { background: #626262 !important; }' +
       '.d .blacklist .user-info-blacklist-wrap li:hover { background: #828282 !important; }' +
@@ -71,26 +91,9 @@
       '.d .properties-list>li.act { background-color: #828282 !important; }' +
       '.d .quick-links-wrap .columns > li .rows > li:hover { background-color: #828282 !important; }' +
       '.d .quick-links-wrap .columns > li .rows > li.title { background-color: #525252 !important; }' +
-      '.d .items-wrap .items-footer { background-color: #525252 !important; }' +
-      '.d .items-wrap .items-cont>li { background-color: #626262 !important; }' +
-      '.d .items-wrap .items-cont>li:hover { background-color: #828282 !important; }' +
-      '.d .items-wrap .items-cont>li.disabled { background-color: #525252 !important; }' +
-      '.d .armoury-tabs .item-list>li.item-give-act, .d .armoury-tabs .item-list>li.item-loan-act, .d .armoury-tabs .item-list>li.item-retrieve-act, ' +
-      '.d .armoury-tabs .item-list>li.item-info-act, .d .armoury-tabs .item-list>li.item-use-act ' +
-      ' { background-color: #828282 !important; }' +
-      '.d .armoury-tabs .item-list .item-action .give.active, .d .armoury-tabs .item-list .item-action .loan.active, ' +
-      '.d .armoury-tabs .item-list .item-action .retrieve.active, .d .armoury-tabs .item-list .item-action .use.active' +
-      ' { color: #57a1c5 !important; }' +
       '.d .specials-cont-wrap .specials-cont>li.act { background-color: #828282 !important; }' +
       '.d .chart-placeholder { background-color: #828282 !important; }' +
       '.d .manage-company .funds .funds-cont { background-color: #828282 !important; }' +
-      '.d .items-wrap .items-cont>li.act { background-color: #828282 !important; }' +
-      '.d .show-item-info .item-cont .item-wrap { background-color: #828282 !important; }' +
-      '.d .info-cont li, .d .additional-info li { background-color: #828282 !important; }' +
-      '.d .info-wrap .t-delimiter { background: linear-gradient(to bottom,#828282 0,rgba(242,242,242,0) 100%) !important; }' +
-      '.d .info-wrap .b-delimiter { background: linear-gradient(to bottom,rgba(242,242,242,0) 0,#828282 100%) !important; }' +
-      '.d .show-item-info .item-cont .info-msg { background-color: #828282 !important; }' +
-      '.d .items-list>li.act { background-color: #828282 !important; }' +
       '.d .sortable-list .info-cont-wrap .divider span { background: #626262 !important; }' +
 // sidebar
       '#sidebar>div>div>div>div>div>div { background: #525252 !important; }'+
