@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      1.21
+// @version      1.22
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -45,6 +45,9 @@
 //    '.d .stock-main-wrap .stock-list .item .stock-tabs>li.ui-tabs-active, .d .sortable-list .latest-messages .list-cont-bg>li.new ' +
       '.d .white-grad { background: linear-gradient(to bottom,#626262 0,#525252 100%) !important; }' +
 // fixups
+      '.d .faction-controls-wrap  { background-color: #626262 !important; }' +
+      '.d .faction-controls-wrap .control-tabs>li.ui-state-disabled a:hover, .d .faction-controls-wrap .control-tabs>li.ui-state-disabled a { background-color: #525252 !important; }' +
+      '.d .faction-controls-wrap .control-tabs>li a:hover, .d .faction-controls-wrap .control-tabs>li.ui-tabs-active a { background-color: #828282 !important; }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a { color: #57a1c5 !important; text-decoration: none !important; pointer: }' +
       '.d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited { color: #c57557 !important; text-decoration: none !important; }' +
       '.d .chain-attacks-title { background-color: #626262 !important; }' +
