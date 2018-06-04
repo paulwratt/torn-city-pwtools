@@ -3,7 +3,7 @@ tool, scripts and extensions by paulwratt [2027970] for TornCity - www.torn.com
 
 https://paulwratt.github.io/torn-city-pwtools/
 
-https://github.com/paulwratt/torn-city-pwtools/wiki
+https://github.com/paulwratt/torn-city-pwtools/wiki (includes screenshots)
 
 **ReAttack Pest** requires specific "edit" text content to work, please see wiki (link above)
 
@@ -15,7 +15,7 @@ Adds a fight button to every profile in Friends/Black lists. **RApest** compatib
 ## ReAttack Pest - v2.09 - rapest.torn.user.js
 Allow to add player to Friends or Black lists after being _mugged_. Allow _ReChain_ for "+3.00 fair fight" profiles in Friends or Black lists. (see wiki link above for usage details).
 
-## DarkTheme - v1.16 - darktheme.torn.user.js
+## DarkTheme - v2.00 - darktheme.torn.user.js
 The standard background image at 77% light reduction, and (originally) 10 lines of CSS replacements. Unlike other Dark Themes, it is not black, and does not touch any text colors.
 
 ## Generic Torn City object
