@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ReAttack Pest for Torn City
 // @namespace    paulwratt.tornCity
-// @version      2.10
+// @version      2.11
 // @description  Allows add user to Friends or Black list after _mugging_ someone
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
