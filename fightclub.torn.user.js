@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fight Club for Torn City
 // @namespace    paulwratt.tornCity
-// @version      1.09
+// @version      1.10
 // @description  Adds attack button to Fiends/Black lists
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -31,7 +31,7 @@ if (!(window === window.top && $('li.logout').length === 0)) {
     if ( isRApest == 1 ) {
       GM_addStyle((<><![CDATA[
 .d .profile-buttons .buttons-list .profile-button.profile-button-Attack.active .icon {
-    background-position: -6px -823px;
+    background-position: -6px -753px;
 }
 ]]></>).toString());
     } else {
