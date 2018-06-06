@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      2.01
+// @version      2.02
 // @description  10 lines of CSS and one darkened image, to appease Nobody[237547] and Chedburn[1]
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -28,6 +28,7 @@
       '.d .users-list>li { background: #626262 !important; }' +
       '.d .users-list>li:hover { background: #828282 !important; }' +
       '.d .forums-thread-wrap .thread-list>li .post-delimiter { background: #626262 !important; }' +
+      '.d .forums-thread-wrap .thread-list .new-post .post-wrap {background-color: #828282 !important; }' +
       '.d .forums-thread-wrap .thread-list .new-post.viewed-post .post-wrap { background-color: #525252 !important; }' +
       '.d .container-body { background: #626262 !important; }' +
       '.d .new .container-body { background: #525252 !important; }' +
@@ -84,7 +85,6 @@
       '.d .specials-cont .item:hover { background-color: #828282 !important; }' +
       '.d .specials-cont>li:hover { background-color: #828282 !important; }' +
       '.d .specials-cont-wrap .specials-cont>li.act { background-color: #828282 !important; }' +
-      '.d .module-desc .info li { color: rgb(242, 242, 242) !important; }' +
       '.d .points-market .users-point-sell>li:hover { background-color: #828282 !important; }' +
       '.d .properties-list>li { background-color: #525252 !important; }' +
       '.d .properties-list>li:hover { background-color: #626262 !important; }' +
@@ -126,6 +126,8 @@
       'div.profile-sign a { color: #57a1c5 !important; text-decoration: none !important; }' +
       'div.profile-sign a:visited { color: #c57557 !important; text-decoration: none !important; }' +
       '.d .preferences-container .head.t-gray-6.bold { color: #a2a2a2 !important; }' +
+      '.d .module-desc .info li { color: #323232 !important; }' +  // crime description text
+      'body.d { color: #323232 !important; }' +                    // other main text (#333)
 // patches for TornStats
       'div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a { color: #57a1c5 !important; text-decoration: none !important; }' +
 // patches for DocTorn
