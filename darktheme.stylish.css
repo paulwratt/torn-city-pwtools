@@ -1,4 +1,4 @@
-@-moz-document regexp('http(s)://(www\\.)torn\\.com/*") {
+@-moz-document regexp('http(s)://(www\\.)torn\\.com/*') {
 body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
