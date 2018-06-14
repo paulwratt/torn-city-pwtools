@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.03
+// @version      3.04
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -15,11 +15,11 @@
   'use strict';
 
 // this color scheme substitutes #f2f2f2 with #828282, and darker are then #626262, slightly darker still #525252
-  var tornCSS = '';
+  var pwt_tornCSS = '';
 
   if (location.href.indexOf('torn.com') !== -1) {
     
-    tornCSS = (<><![CDATA[
+    pwt_tornCSS = (<><![CDATA[
 body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
@@ -62,20 +62,22 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { background: #525252 !important; }
     .d .fm-list>li:hover, .r .fm-list>li:hover
       { background: #828282 !important; }
-// white gradient bars/buttons
-//  .d .white-grad, .d .white-grad-tabs>li, .d .white-grad-tabs>li.disabled:hover, .d .white-grad-tabs>li.ui-state-disabled:hover, .d .fm-list>li.new,
-//  .d .thread-list .action-wrap>li, .d .thread-list .action-wrap>li.like.disabled:hover, .d .thread-list .action-wrap>li.dislike.disabled:hover,
-//  .d .forums-thread-wrap .action-wrap>li.quote.disabled:hover, .d .forums-thread-wrap .action-wrap>li.report.disabled:hover,
-//  .d .forums-thread-wrap .action-wrap>li.edit.disabled:hover, .d .forums-thread-wrap .action-wrap>li.lock.disabled:hover,
-//  .d .forums-thread-wrap .action-wrap>li.delete.disabled:hover, .d .forums-thread-wrap .action-wrap>li.move.disabled:hover,
-//  .d .forums-thread-wrap .action-wrap>li.ban.disabled:hover, .d .customize-items-list>li>span,
-//  .d .content-wrapper.logged-out-sidebar .thread-list .action-wrap>li:hover, .d .stock-main-wrap .stock-list .item .ui-accordion-header-active,
-//  .d .stock-main-wrap .stock-list .item .stock-tabs>li.ui-tabs-active, .d .sortable-list .latest-messages .list-cont-bg>li.new,
+/* redundant white gradient bars/buttons
+    .d .white-grad, .d .white-grad-tabs>li, .d .white-grad-tabs>li.disabled:hover, .d .white-grad-tabs>li.ui-state-disabled:hover, .d .fm-list>li.new,
+    .d .thread-list .action-wrap>li, .d .thread-list .action-wrap>li.like.disabled:hover, .d .thread-list .action-wrap>li.dislike.disabled:hover,
+    .d .forums-thread-wrap .action-wrap>li.quote.disabled:hover, .d .forums-thread-wrap .action-wrap>li.report.disabled:hover,
+    .d .forums-thread-wrap .action-wrap>li.edit.disabled:hover, .d .forums-thread-wrap .action-wrap>li.lock.disabled:hover,
+    .d .forums-thread-wrap .action-wrap>li.delete.disabled:hover, .d .forums-thread-wrap .action-wrap>li.move.disabled:hover,
+    .d .forums-thread-wrap .action-wrap>li.ban.disabled:hover, .d .customize-items-list>li>span,
+    .d .content-wrapper.logged-out-sidebar .thread-list .action-wrap>li:hover, .d .stock-main-wrap .stock-list .item .ui-accordion-header-active,
+    .d .stock-main-wrap .stock-list .item .stock-tabs>li.ui-tabs-active, .d .sortable-list .latest-messages .list-cont-bg>li.new,
+*/
+/* white gradient bars/buttons */
     .d .white-grad, .d .white-grad-tabs>li, .r .white-grad, .r .white-grad-tabs>li
       { background: linear-gradient(to bottom,#626262 0,#525252 100%) !important; }
     .d .white-grad-tabs li.ui-tabs-active, .d .white-grad-tabs>li:hover, .r .white-grad-tabs li.ui-tabs-active, .r .white-grad-tabs>li:hover
       { background: linear-gradient(to bottom,#828282 0,#626262 100%) !important; }
-// factions
+/* factions */
     .d .chain-attacks-title, .d .chain-attacks-title
       { background-color: #626262 !important; }
     .d .chain-attacks-list, .r .chain-attacks-list
@@ -114,7 +116,7 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
     .r .armoury-tabs .item-list>li.item-give-act, .r .armoury-tabs .item-list>li.item-loan-act, .r .armoury-tabs .item-list>li.item-retrieve-act,
     .r .armoury-tabs .item-list>li.item-info-act, .r .armoury-tabs .item-list>li.item-use-act
       { background-color: #828282 !important; }
-// items
+/* items */
     .d .items-wrap .items-footer, .r .items-wrap .items-footer
       { background-color: #525252 !important; }
     .d .items-wrap .items-cont>li, .r .items-wrap .items-cont>li
@@ -135,7 +137,7 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { background-color: #828282 !important; }
     .d .travel-agency-market .item-wrap, .r .travel-agency-market .item-wrap
       { background-color: #828282 !important; }
-//  .d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; }
+/*  .d .action-log .log-list li.color-3 .message-wrap { background: #626262 !important; } */
     .d .action-log .log-list li .message-wrap, .r .action-log .log-list li .message-wrap
       { background: #626262 !important; }
     .d .blacklist .user-info-blacklist-wrap li:hover, .r .blacklist .user-info-blacklist-wrap li:hover
@@ -167,7 +169,7 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { background-color: #828282 !important; }
     .d .sortable-list .info-cont-wrap .divider span, .r .sortable-list .info-cont-wrap .divider span
       { background: #626262 !important; }
-// sidebar
+/* sidebar */
     #sidebar>div>div>div>div>div>div
       { background: #525252 !important; }
     #sidebar>div>div>div>div>div>div p>a
@@ -182,7 +184,7 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { background: #828282 !important; }
     #nav-friends>div:hover, #nav-enemies>div:hover
       { background: #626262 !important; }
-// delimiters
+/* delimiters */
     .d .info-wrap .t-delimiter, .r .info-wrap .t-delimiter
       { background: linear-gradient(to bottom,#828282 0,rgba(242,242,242,0) 100%) !important; }
     .d .info-wrap .b-delimiter, .r .info-wrap .b-delimiter
@@ -198,14 +200,14 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
     .d .travel-agency-travelling .stage>div.fade-left, .d .travel-agency-travelling .stage>div.fade-right,
     .r .travel-agency-travelling .stage>div.fade-left, .r .travel-agency-travelling .stage>div.fade-right
       { display: none !important; }
-// tweaks (mostly text and links)
+/* tweaks (mostly text and links) */
     .d .forums-thread-wrap .thread-list .column-wrap .poster-wrap, .r .forums-thread-wrap .thread-list .column-wrap .poster-wrap
       { background: #424242 !important; }
     .d .faction-main-wrap .title-toggle.active+.cont-toggle a, .r .faction-main-wrap .title-toggle.active+.cont-toggle a
-      { color: #57a1c5 !important; text-decoration: none !important; pointer: }
+      { color: #57a1c5 !important; text-decoration: none !important; pointer: hand !important; }
     .d .faction-main-wrap .title-toggle.active+.cont-toggle a:visited, .r .faction-main-wrap .title-toggle.active+.cont-toggle a:visited
       { color: #c57557 !important; text-decoration: none !important; }
-    .d .f-war-list.war-new .faction-war .tab-menu-cont .members-list .level, .dr.f-war-list.war-new .faction-war .tab-menu-cont .members-list .level
+    .d .f-war-list.war-new .faction-war .tab-menu-cont .members-list .level, .r.f-war-list.war-new .faction-war .tab-menu-cont .members-list .level
       { color:#323232 !important; }
     .d .armoury-tabs .item-list .item-action .give.active, .d .armoury-tabs .item-list .item-action .loan.active,
     .d .armoury-tabs .item-list .item-action .retrieve.active, .d .armoury-tabs .item-list .item-action .use.active,
@@ -222,27 +224,27 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
     .d .preferences-container .head.t-gray-6.bold, .r .preferences-container .head.t-gray-6.bold
       { color: #a2a2a2 !important; }
     .d .module-desc .info li, .r .module-desc .info li
-      { color: #323232 !important; }    // crime description text
+      { color: #323232 !important; } /* crime description text */
     body.d, body.r
-      { color: #323232 !important; }    // other main text (#333)
-// patches for TornStats
+      { color: #323232 !important; } /* other main text (#333) */
+/* patches for TornStats */
     div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a
       { color: #57a1c5 !important; text-decoration: none !important; }
-// patches for DocTorn
-    .d .sortable-list .doctorn-widget__body .info-cont-wrap .divider span
+/* patches for DocTorn */
+    .d .sortable-list .doctorn-widget__body .info-cont-wrap .divider span, .r .sortable-list .doctorn-widget__body .info-cont-wrap .divider span
       { background: rgb(242, 242, 242) !important; }
 ]]></>).toString();
 
 if (typeof GM_addStyle != "undefined") {
-	GM_addStyle(tornCSS);
+	GM_addStyle(pwt_tornCSS);
 } else if (typeof PRO_addStyle != "undefined") {
-	PRO_addStyle(tornCSS);
+	PRO_addStyle(pwt_tornCSS);
 } else if (typeof addStyle != "undefined") {
-	addStyle(tornCSS);
+	addStyle(pwt_tornCSS);
 } else {
 	var node = document.createElement("style");
 	node.type = "text/css";
-	node.appendChild(document.createTextNode(tornCSS));
+	node.appendChild(document.createTextNode(pwt_tornCSS));
 	var heads = document.getElementsByTagName("head");
 	if (heads.length > 0) {
 		heads[0].appendChild(node);
@@ -250,7 +252,7 @@ if (typeof GM_addStyle != "undefined") {
 		// no head yet, stick it whereever
 		document.documentElement.appendChild(node);
 	}
-}
+  }
     
 }
   
