@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.00
+// @version      3.01
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -17,7 +17,7 @@
 
   if (location.href.indexOf('torn.com') !== -1) {
     
-    GM_addStyle((<><![CDATA[
+    tornCSS=(<><![CDATA[
 body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
@@ -229,7 +229,27 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
 // patches for DocTorn
     .d .sortable-list .doctorn-widget__body .info-cont-wrap .divider span
       { background: rgb(242, 242, 242) !important; }
-]]></>).toString());
-  }
+]]></>).toString();
+
+if (typeof GM_addStyle != "undefined") {
+	GM_addStyle(tornCSS);
+} else if (typeof PRO_addStyle != "undefined") {
+	PRO_addStyle(tornCSS);
+} else if (typeof addStyle != "undefined") {
+	addStyle(tornCSS);
+} else {
+	var node = document.createElement("style");
+	node.type = "text/css";
+	node.appendChild(document.createTextNode(tornCSS));
+	var heads = document.getElementsByTagName("head");
+	if (heads.length > 0) {
+		heads[0].appendChild(node);
+	} else {
+		// no head yet, stick it whereever
+		document.documentElement.appendChild(node);
+	}
+}
+    
+}
   
 })();
