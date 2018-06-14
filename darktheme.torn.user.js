@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.01
+// @version      3.02
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
 // @updateURL    https://github.com/paulwratt/torn-city-pwtools/raw/master/darktheme.torn.user.js
 // @include      *torn.com/*
+// @run-at       document-start
 // @grant        GM_addStyle
 // ==/UserScript==
 
