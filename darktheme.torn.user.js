@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.02
+// @version      3.03
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -15,10 +15,11 @@
   'use strict';
 
 // this color scheme substitutes #f2f2f2 with #828282, and darker are then #626262, slightly darker still #525252
+  var tornCSS = '';
 
   if (location.href.indexOf('torn.com') !== -1) {
     
-    tornCSS=(<><![CDATA[
+    tornCSS = (<><![CDATA[
 body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
