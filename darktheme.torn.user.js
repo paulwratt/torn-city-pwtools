@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.04
+// @version      3.05
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -174,11 +174,11 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { background: #525252 !important; }
     #sidebar>div>div>div>div>div>div p>a
       { color: #57a1c5 !important; }
-    #nav-home>div, #nav-items>div, #nav-city>div, #nav-job>div, #nav-gym>div, #nav-properties>div, #nav-education>div,
+    #nav-home>div, #nav-items>div, #nav-city>div, #nav-job>div, #nav-gym>div, #nav-jail_gym>div, #nav-properties>div, #nav-education>div,
     #nav-crimes>div, #nav-missions>div, #nav-newspaper>div, #nav-jail>div, #nav-hospital>div, #nav-casino>div,
     #nav-forums>div, #nav-hall_of_fame>div, #nav-my_faction>div, #nav-recruit_citizens>div, #nav-community_events>div
       { background: #626262 !important; }
-    #nav-home>div:hover, #nav-items>div:hover, #nav-city>div:hover, #nav-job>div:hover, #nav-gym>div:hover, #nav-properties>div:hover, #nav-education>div:hover,
+    #nav-home>div:hover, #nav-items>div:hover, #nav-city>div:hover, #nav-job>div:hover, #nav-gym>div:hover, #nav-jail_gym>div:hover, #nav-properties>div:hover, #nav-education>div:hover,
     #nav-crimes>div:hover, #nav-missions>div:hover, #nav-newspaper>div:hover, #nav-jail>div:hover, #nav-hospital>div:hover, #nav-casino>div:hover,
     #nav-forums>div:hover, #nav-hall_of_fame>div:hover, #nav-my_faction>div:hover, #nav-recruit_citizens>div:hover, #nav-community_events>div:hover
       { background: #828282 !important; }
