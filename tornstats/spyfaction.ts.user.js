@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Spy Faction for TornStats
 // @namespace    paulwratt.tornstats
-// @version      1.00
+// @version      1.01
 // @description  Fixed position Torn window to scroll spys
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -20,9 +20,9 @@
     
     pwt_tsCSS = (<><![CDATA[
     #warbase {
-      position: fixed;
-      height: 100vh;
-      left: 42vw;
+      position: fixed !important;
+      height: 100vh !important;
+      left: 42vw !important;
     }
 ]]></>).toString();
 
