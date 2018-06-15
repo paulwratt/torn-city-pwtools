@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         Spy Faction for TornStats
 // @namespace    paulwratt.tornstats
-// @version      1.03
+// @version      1.04
 // @description  Fixed position Torn window to scroll spys
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
 // @updateURL    https://github.com/paulwratt/torn-city-pwtools/raw/master/tornstats/spyfaction.ts.user.js
-// @include      *tornstats.com/spyhq.php?action=faction*
+// @include      *tornstats.com/spyhq.php*
 // @run-at       document-start
 // @grant        GM_addStyle
 // ==/UserScript==
