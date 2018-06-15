@@ -16,7 +16,8 @@ Adds a fight button to every profile in Friends/Black lists. **RApest** compatib
 Allow to add player to Friends or Black lists after being _mugged_. Allow _ReChain_ for "+3.00 fair fight" profiles in Friends or Black lists. (see wiki link above for usage details).
 
 ## DarkTheme - darktheme.torn.user.js
-The standard background image at 77% light reduction, and (originally) 10 lines of CSS replacements. Unlike other Dark Themes, it is not black, and does not touch any text colors.
+The standard background image at 77% light reduction, and (originally) 10 lines of CSS replacements. Unlike other Dark Themes, it is not black, and does not touch any text colors. You can now install the theme with Stylish:
+https://userstyles.org/styles/161398/darktheme-for-torn
 
 ## Generic Torn City object
 In testing at the moment but when finished, code to produce a generic _tc_ object, in long and short form. Can be used as script include or as basis for another userscript. Test it if you know how.
