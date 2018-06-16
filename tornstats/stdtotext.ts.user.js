@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Extract Table for TornStats
 // @namespace    paulwratt.tornstats
-// @version      1.02
+// @version      1.03
 // @description  Output selected table data to text
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -20,21 +20,21 @@ if (location.href.indexOf('tornstats.com') !== -1) {
 pw_tsWin = null;
 function pw_tsDoExport(){
   var xE = '';
-  var xF = document.forms[0];
+  var xF = document.getElementsByTagName('input');
   for (i=0; i<xF.length; i++){
-    if (xF.elements[i].type=='checkbox' && xF.elements[i].getAttribute('name')=='ids[]'){
-      if (xF.elements[i].checked){
-        xE = xE + 'Name:' + xF.elements[i].parentNode.innerText + '<br>\n';
-        xE = xE + 'Level: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+    if (xF[i].type=='checkbox' && xF[i].getAttribute('name')=='ids[]'){
+      if (xF[i].checked){
+        xE = xE + 'Name:' + xF[i].parentNode.innerText + '<br>\n';
+        xE = xE + 'Level: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.innerText + '<br>\n';
         xE = xE + '<br>\n';
         xE = xE + 'You managed to get the following results:<br>\n';
-        xE = xE + 'Speed: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
-        xE = xE + 'Strength: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
-        xE = xE + 'Defense: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
-        xE = xE + 'Dexterity: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
-        xE = xE + 'Total: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + 'Speed: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + 'Strength: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + 'Defense: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + 'Dexterity: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + 'Total: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
 //      xE = xE + '<br>\n';
-        xE = xE + '== Date: ' + xF.elements[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
+        xE = xE + '==== Date: ' + xF[i].parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText + '<br>\n';
         xE = xE + '<br>\n';
       }
     }
