@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.07
+// @version      3.08
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -88,7 +88,11 @@ body.d, body.r { background: #121212 url(https://paulwratt.github.io/torn-city-p
       { background-color: #626262 !important; }
     .d .f-war-list.war-new>li.inactive, .d .f-war-list.war-new>li.inactive:hover
     .r .f-war-list.war-new>li.inactive, .r .f-war-list.war-new>li.inactive:hover
-      { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
+      { background: #121212 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
+    .d .f-war-list.war-new>li.act:before, .d .f-war-list.war-new>li.act:after
+      { background-color: #121212 !important; }
+    .d .f-war-list.war-new>li.act .status-wrap:after, .d .f-war-list.war-new>li.act .status-wrap:before
+      { background-color: #525252 !important; }
     .d .f-war-list.war-new .faction-war-info, .r .f-war-list.war-new .faction-war-info
       { background-color: #525252 !important; }
     .d .f-war-list.war-new .faction-names, .r .f-war-list.war-new .faction-names
