@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Extract Table for TornStats
 // @namespace    paulwratt.tornstats
-// @version      1.01
+// @version      1.02
 // @description  Output selected table data to text
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
 // @updateURL    https://github.com/paulwratt/torn-city-pwtools/raw/master/tornstats/stdtotext.ts.user.js
 // @run-at       document-end
 // @include      https://www.tornstats.com/spyhq.php*
+// @include      https://www.tornstats.com/exports/spies/*
 // @exclude      https://www.tornstats.com/spyhq.php?action=e*
 // ==/UserScript==
 
