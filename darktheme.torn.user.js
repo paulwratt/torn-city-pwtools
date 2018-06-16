@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.05
+// @version      3.06
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -225,8 +225,12 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { color: #a2a2a2 !important; }
     .d .module-desc .info li, .r .module-desc .info li
       { color: #323232 !important; } /* crime description text */
+    .d ul.ql-at ul.rows>li>a>span, .r ul.ql-at ul.rows>li>a>span
+      { color: #222222 !important; } /* city quick links (varies) */
+    #barEnergy, #barNerve, #barHappy, #barLife, #barChain
+      { color: #222222 !important; } /* timer bar text (#333) */
     body.d, body.r
-      { color: #323232 !important; } /* other main text (#333) */
+      { color: #222222 !important; } /* other main text (#333) */
 /* patches for TornStats */
     div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a
       { color: #57a1c5 !important; text-decoration: none !important; }
