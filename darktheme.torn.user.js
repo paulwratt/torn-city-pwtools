@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Dark Theme for Torn
 // @namespace    paulwratt.torn
-// @version      3.06
+// @version      3.07
 // @description  Not Black, or Silver, but a Dark Theme for Torn
 // @author       paulwratt [2027970]
 // @homepage     https://paulwratt.github.io/torn-city-pwtools/
@@ -20,7 +20,7 @@
   if (location.href.indexOf('torn.com') !== -1) {
     
     pwt_tornCSS = (<><![CDATA[
-body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
+body.d, body.r { background: #121212 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
       { background-color: #626262 !important; }
@@ -170,6 +170,8 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
     .d .sortable-list .info-cont-wrap .divider span, .r .sortable-list .info-cont-wrap .divider span
       { background: #626262 !important; }
 /* sidebar */
+    .d #sidebar
+      { background: #121212 !important; }
     #sidebar>div>div>div>div>div>div
       { background: #525252 !important; }
     #sidebar>div>div>div>div>div>div p>a
@@ -223,10 +225,14 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { color: #c57557 !important; text-decoration: none !important; }
     .d .preferences-container .head.t-gray-6.bold, .r .preferences-container .head.t-gray-6.bold
       { color: #a2a2a2 !important; }
+    .d .t-gray-6 div.info
+      { color: #323232 !important; } /* city territory text */
     .d .module-desc .info li, .r .module-desc .info li
       { color: #323232 !important; } /* crime description text */
     .d ul.ql-at ul.rows>li>a>span, .r ul.ql-at ul.rows>li>a>span
       { color: #222222 !important; } /* city quick links (varies) */
+    .d .date-time, .r .date-time
+      { color: #222222 !important; } /* date time text (#666) */
     #barEnergy, #barNerve, #barHappy, #barLife, #barChain
       { color: #222222 !important; } /* timer bar text (#333) */
     body.d, body.r
