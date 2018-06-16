@@ -1,5 +1,5 @@
 @-moz-document domain('torn.com') {
-/* v3.05 */
+/* v3.06 */
 body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwtools/imgs/bg_regular_dark.jpg) top left repeat !important; }
     .d .profile-container, .d .gym-container .gym-box, .d .menu-body, .d .cont-gray10, .d .cont-gray,
     .r .profile-container, .r .gym-container .gym-box, .r .menu-body, .r .cont-gray10, .r .cont-gray
@@ -205,8 +205,12 @@ body.d, body.r { background: #111 url(https://paulwratt.github.io/torn-city-pwto
       { color: #a2a2a2 !important; }
     .d .module-desc .info li, .r .module-desc .info li
       { color: #323232 !important; } /* crime description text */
+    .d ul.ql-at ul.rows>li>a>span, .r ul.ql-at ul.rows>li>a>span
+      { color: #222222 !important; } /* city quick links (varies) */
+    #barEnergy, #barNerve, #barHappy, #barLife, #barChain
+      { color: #222222 !important; } /* timer bar text (#333) */
     body.d, body.r
-      { color: #323232 !important; } /* other main text (#333) */
+      { color: #222222 !important; } /* other main text (#333) */
 /* patches for TornStats */
     div.profile-container.basic-info.bottom-round>div>table>tbody>tr>td>table>tbody>tr>td>a
       { color: #57a1c5 !important; text-decoration: none !important; }
